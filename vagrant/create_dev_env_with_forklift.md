@@ -51,7 +51,18 @@ Add the forklift repo as a subdir in your current git repo:
 
 ```sh
 git remote add -f theforeman-forklift https://github.com/theforeman/forklift.git
+git subtree add --prefix forklift theforeman-forklift master --squash
+```
 
+Optional: Create a script which updates the submodule:
+
+```sh
+#!/bin/bash
+remote=${1:-theforeman-forklift}
+prefix=${2:-forklift}
+branch=${3:-master}
+git fetch "$remote" "$branch"
+git subtree pull --prefix "$prefix" "$remote" "$branch" --squash
 ```
 
 Create a custom ```ansible.cfg``` inside your repo with the following contents:
@@ -101,5 +112,27 @@ Trying it out
 
 Now you may go ahead and run some ```vagrant``` commands! Try to display your machines and start a
 box!
+
+```sh
+vagrant status
+vagrant up centos7
+```
+
+Overriding options from plugins with forklift
+---------------------------------------------
+
+```sh
+mkdir -p plugins/my-custom-stuff
+touch plugins/my-custom-stuff/Vagrantfile
+```
+
+More at https://github.com/theforeman/forklift/blob/master/docs/plugins.md
+
+Now you have to link your overrides into the plugins directory of forklift:
+
+```sh
+cd forklift/plugins
+ln -s ../../plugins/my-custom-stuff .
+```
 
 TL;DR: run ```vagrant_forklift_repo.sh``` to create a basic skeleton at the provided path
