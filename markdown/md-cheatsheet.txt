@@ -1,0 +1,144 @@
+# Stolen from https://raw.githubusercontent.com/osgav/osgav-source/master/content/post/cheatsheet.md
+# Thanks, mate! ;-)
++++
+author = "osgav"
+date = "2070-01-01T00:00:00Z"
+draft = true
+slug = "cheatsheet"
+tags = ["formatting-cheatsheet-dont-undraft"]
+title = "cheatsheet" 
+
++++
+
+https://raw.githubusercontent.com/osgav/osgav-source/master/content/post/cheatsheet.md
+
+<https://osgav.run>
+[text link](https://osgav.run)
+[text link with hover text](https://osgav.run "hoverboard")
+
+*italic*
+**bold**
+***bold italic***
+<s>strikethrough</s>
+
+
+*italic text* and \*escaped asterisks\*
+
+<b>bold text</b> and &lt;html&gt; tags
+
+&copy; special entity and `&copy;` or &amp;copy; to escape a special entity 
+
+
+> these are
+>
+> blockquotes
+
+This is `inline preformatted text` and...
+
+    This is an entire
+    block of preformatted
+    text
+
+An easier way to do a block of text:
+
+```
+<a href="#">hyperlink</a>
+```
+There is also code highlighting...
+
+{{< highlight go "linenos=inline" >}}
+import os
+
+with open("log.txt", "r") as log_handle:
+	log_content = log_handle.read()
+{{< / highlight >}}
+
+
+{{< highlight go "linenos=inline,hl_lines=2 6" >}}
+import os
+import json
+
+with open("log.txt", "r") as log_handle:
+	log_content = log_handle.read()
+	log_json = json.load(log_content)
+{{< / highlight >}}
+
+
+{{< highlight html >}}
+<a href="#">hallo</a>
+{{< /highlight >}}
+
+{{< highlight python >}}
+    #!/usr/bin/python
+    import os
+    import json
+    print "this is python formatting"
+    print "but it doesn't seem to work"
+{{< /highlight >}}
+
+Python highlighting doesn't seem too great though...
+
+---
+
+horizontal rulez
+
+---
+
+embed a tweet!
+
+https://twitter.com/spf13/status/666616452582129664 
+
+{{< tweet 666616452582129664 >}}
+
+---
+
+{{< figure src="/images/zerodots_wordle.png" title="zerdots wordle" >}}
+
+---
+
+![rest in peace](/images/zerodots_wordle.png "rip")
+
+---
+
+how about a list?
+
+* unordered lists can use
++ 1 of 3 different symbols
+- they are + * -
+
+new list!
+
+1. Numbered lists use numbers
++  But they don't need to continue using numbers
+*  + * - or another number will do the trick
++  while keeping the numbering correct for you...
+
+---
+
+Tables can be done in markdown and you can also use `HTML` tables:
+
+First header | Second Header
+------------ | -------------
+Content Cell | Content Cell
+Content Cell | Content Cell
+
+
+---
+
+
+# header 1
+## header 2
+### header 3
+#### header 4
+##### header 5
+###### header 6
+
+---
+
+huge header
+============
+
+smaller header
+--------------
+
+---
