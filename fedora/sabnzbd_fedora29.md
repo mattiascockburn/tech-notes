@@ -1,4 +1,4 @@
-= Install sabnzbd on Fedora 29
+= Install sabnzbd on Fedora 29 x86_64
 
 Mostly ripped from https://sabnzbd.org/wiki/installation/install-fedora-centos-rhel
 Please be aware that you should run the following commands in the context of root.
@@ -8,13 +8,20 @@ Please be aware that you should run the following commands in the context of roo
 We need to add at least RPM Fusion NONFREE in order to obtain unrar:
 
 ```
-yum install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-29.noarch.rpm
+dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-29.noarch.rpm
 ```
 
 == Prereqs Install
 
 ```
-yum install par2cmdline python-yenc python-cheetah unrar git
+dnf install -y par2cmdline python-yenc python-cheetah unrar git unzip p7zip
+```
+
+Install SABYenc (https://sabnzbd.org/wiki/installation/sabyenc.html)
+
+```
+pip install --upgrade pip
+pip install sabyenc --upgrade
 ```
 
 == Obtain sabnzbd
