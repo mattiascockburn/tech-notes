@@ -1,7 +1,7 @@
 = Bridge with masquerading for VMs
 
 I have an internal bridge named `labnet_bridge`. This will be set to the `internal` zone of firewalld.
-The network of this adapter will be 10.44.44.0/24. The external zone (hooked up to the interwebz) will be called `public`.
+The network of this adapter will be 10.44.44.0/24. The external zone (hooked up to the interwebz, adapter eth0) will be called `public`.
 
 Make sure stuff like `ebtables` is installed correctly. It might not be on Archlinux.
 Also make sure `ip_forwarding` is enabled in the kernel.
@@ -14,9 +14,11 @@ Now, we define the sources of this zone:
 
 `firewall-cmd --zone=internal --add-source=10.44.44.0/24`
 
-At last, enable masquerading:
+IMPORTANT: Masquerading of packets!
 
-`firewall-cmd --zone=public --enable-masquerading`
+We cannot use the integrated masquerading option of firewalld and instead have to use a direct rule:
+
+`firewall-cmd --direct --add-rule ipv4 nat POSTROUTING 0 -o eth0 -j MASQUERADE`
 
 If stuff works as expected, save the configuration:
 
